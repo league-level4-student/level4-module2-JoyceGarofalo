@@ -32,13 +32,33 @@ public class StringMethods {
 
 	// Given Strings s1 and s2, return the longer String
 	public static String longerString(String s1, String s2) {
+		if(s1.length() > s2.length()) {
+			return s1;
+		}
+		else if(s2.length() > s1.length()) {
+			return s2;
+		}
+		else if(s1.length() == s2.length()){
+			return s1;
+		}
 		return null;
 	}
 
 	
 	// if String s contains the word "underscores", change all of the spaces to underscores
 	public static String formatSpaces(String s) {
-		return null;
+		//System.out.println(s);
+		String c = "";
+		if(s.contains("underscores")) {
+			for (int i = 0; i < s.length(); i++) {
+				if(s.charAt(i) == ' ') {
+					c = s.replace(s.charAt(i), '_');
+				}
+			}
+			//System.out.println(c);
+			return c;
+		}
+		return s;		
 	}
 
 	
@@ -52,7 +72,16 @@ public class StringMethods {
 	
 	// Return the sum of all numerical digits in the String
 	public static int numeralSum(String s) {
-		return 0;
+		int sum = 0;
+		char currentnum;
+		for (int i = 0; i < s.length(); i++) {
+			if(s.charAt(i) == 0 || s.charAt(i) == 1 || s.charAt(i) == 2 || s.charAt(i) == 3 || s.charAt(i) == 4 || s.charAt(i) == 5 || s.charAt(i) == 6 || s.charAt(i) == 7 || s.charAt(i) == 8 || s.charAt(i) == 9) {
+				currentnum = s.charAt(i);
+				sum += Character.getNumericValue(currentnum);
+			}
+		}
+		System.out.println(sum);
+		return sum;
 	}
 	
 	
