@@ -66,7 +66,125 @@ public class StringMethods {
 	// You cannot assume there are no extra spaces around the name, but you can
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
-		return null;
+		char s1char = 0;
+		char s2char = 0;
+		char s3char = 0;
+		
+		for (int i = s1.length()-1; i > 0; i--) {
+			if(s1.charAt(i) != ' ') {
+				s1char = s1.charAt(i);
+				break;
+			}
+		}
+		for (int j = s2.length()-1; j > 0; j--) {
+			if(s2.charAt(j) != ' ') {
+				s2char = s2.charAt(j);
+				break;
+			}
+		}
+		for (int x = s3.length()-1; x > 0; x--) {
+			if(s3.charAt(x) != ' ') {
+				s3char = s3.charAt(x);
+				break;
+			}
+		}
+		//picks last character
+		
+		String s1letter = "";
+		s1letter += s1char;
+		String s2letter = "";
+		s2letter += s2char;
+		String s3letter = "";
+		s3letter += s3char;
+		
+		
+		String lineleader = "";
+		if(s1letter.compareToIgnoreCase(s2letter) < 0) { //s1 smaller than s2
+			if(s1letter.compareToIgnoreCase(s3letter) < 0){ //s1 smaller than s3
+				lineleader = s1letter;
+			}
+			else if(s1letter.compareToIgnoreCase(s3letter) > 0) { //s3 smaller than s1
+				lineleader = s3letter;
+			}
+		}
+		else if(s1letter.compareToIgnoreCase(s2letter) > 0) { //s2 smaller than s1
+			if(s2letter.compareToIgnoreCase(s3letter) < 0) {
+				lineleader = s2letter;
+			}
+			else if(s2letter.compareToIgnoreCase(s3letter) > 0) {
+				lineleader = s3letter;
+			}
+		}
+		
+		//organizes alphabetically
+		//System.out.println(s1letter + ", " + s2letter + ", " + s3letter);
+		//System.out.println(lineleader);
+		
+		int firstletterindex = 0;
+		int lastletterindex = 0;
+		String news1 = "";
+		int firstletterindexs2 = 0;
+		int lastletterindexs2 = 0;
+		String news2 = "";
+		int firstletterindexs3 = 0;
+		int lastletterindexs3 = 0;
+		String news3 = "";
+		
+		//remove spaces
+		if(lineleader == s1letter) {
+			for (int i = 0; i < s1.length(); i++) {
+				if(s1.charAt(i) != ' ') {
+					firstletterindex = i;
+					break;
+				}
+			}
+			for (int i = s1.length()-1; i > 0; i--) {
+				if(s1.charAt(i) != ' ') {
+					lastletterindex = i;
+					break;
+				}
+			}
+			for (int i = firstletterindex; i < lastletterindex+1; i++) {
+				news1 += s1.charAt(i);
+			}
+			return news1;
+		}
+		else if(lineleader == s2letter) {
+			for (int i = 0; i < s2.length(); i++) {
+				if(s2.charAt(i) != ' ') {
+					firstletterindexs2 = i;
+					break;
+				}
+			}
+			for (int i = s2.length()-1; i > 0; i--) {
+				if(s2.charAt(i) != ' ') {
+					lastletterindexs2 = i;
+					break;
+				}
+			}
+			for (int i = firstletterindexs2; i < lastletterindexs2+1; i++) {
+				news2 += s2.charAt(i);
+			}
+			return news2;
+		}
+		else {
+			for (int i = 0; i < s3.length(); i++) {
+				if(s3.charAt(i) != ' ') {
+					firstletterindexs3 = i;
+					break;
+				}
+			}
+			for (int i = s3.length()-1; i > 0; i--) {
+				if(s3.charAt(i) != ' ') {
+					lastletterindexs3 = i;
+					break;
+				}
+			}
+			for (int i = firstletterindexs3; i < lastletterindexs3+1; i++) {
+				news3 += s3.charAt(i);
+			}
+			return news3;
+		}
 	}
 	
 	
@@ -75,19 +193,32 @@ public class StringMethods {
 		int sum = 0;
 		char currentnum;
 		for (int i = 0; i < s.length(); i++) {
-			if(s.charAt(i) == 0 || s.charAt(i) == 1 || s.charAt(i) == 2 || s.charAt(i) == 3 || s.charAt(i) == 4 || s.charAt(i) == 5 || s.charAt(i) == 6 || s.charAt(i) == 7 || s.charAt(i) == 8 || s.charAt(i) == 9) {
+			if(s.charAt(i) == '0' || s.charAt(i) == '1' || s.charAt(i) == '2' || s.charAt(i) == '3' || s.charAt(i) == '4' || s.charAt(i) == '5' || s.charAt(i) == '6' || s.charAt(i) == '7' || s.charAt(i) == '8' || s.charAt(i) == '9') {
 				currentnum = s.charAt(i);
 				sum += Character.getNumericValue(currentnum);
 			}
 		}
-		System.out.println(sum);
+		//System.out.println(sum);
 		return sum;
 	}
 	
 	
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
-		return 0;
+		int contains = 0;
+		int num = 0;
+		if(s.contains(substring)){
+			for (int i = 0; i < s.length(); i++) {
+				for (int j = 0; j < substring.length(); j++) {
+					//NOT DONE YET ////////////////////////////////////////////////////
+				}
+			}
+			System.out.println(contains + "," + num);
+			return num;
+		}
+		else {
+			return 0;
+		}
 	}
 
 	// Call Utitilities.encrypt to encrypt String s
