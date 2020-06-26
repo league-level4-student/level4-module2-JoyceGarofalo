@@ -205,37 +205,78 @@ public class StringMethods {
 	
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
-		int contains = 0;
+		//int substringlength = substring.length();
 		int num = 0;
+		int onecharnum = 0;
+		Boolean char1exists = false;
+		Boolean char2exists = false;
+		int fullstring = 0;
 		if(s.contains(substring)){
 			for (int i = 0; i < s.length(); i++) {
-				for (int j = 0; j < substring.length(); j++) {
-					//NOT DONE YET ////////////////////////////////////////////////////
+				if(s.charAt(i) == substring.charAt(0) && substring.length() < 2) {
+					onecharnum += 1;
 				}
 			}
-			System.out.println(contains + "," + num);
-			return num;
+			for (int i = 0; i < s.length(); i ++) {
+				if(s.charAt(i) == substring.charAt(0) && substring.length() > 1) {
+					char1exists = true;
+					if(s.charAt(i+1) == substring.charAt(1)) {
+						char2exists = true;
+						if(s.charAt(i+2) == substring.charAt(2)) {
+							fullstring += 1;
+						}
+					}
+				}
+			}
+			num = fullstring;
+			
+			//System.out.println(substring.charAt(0) + ", " + substring.length() + ", " + num);
+			if(substring.length() < 2) {
+				return onecharnum;
+			}
+			else {
+				return num;
+			}
 		}
 		else {
-			return 0;
+			num = 0;
+			return num;
 		}
 	}
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
-		return null;
+		return Utilities.encrypt(s.getBytes(), (byte) key);           
+		
 	}
 
 	// Call Utilities.decrypt to decrypt the cyphertext
 	public static String decrypt(String s, char key) {
-		return null;
+		return Utilities.decrypt(s, (byte) key);
 	}
 
 
 	// Return the number of words in String s that end with String substring
 	// You can assume there are no punctuation marks between words
 	public static int wordsEndsWithSubstring(String s, String substring) {
-		return 0;
+		int count = 0;
+		int spaceindex = 0;
+		int startindex = -1;
+		String split = "";
+		for (int i = 0; i < s.length(); i++) {
+			if(s.charAt(i) == ' ') {
+				spaceindex = i;
+				for (int j = startindex+1; j < spaceindex; j++) {
+					split += s.charAt(j);
+					startindex = spaceindex;
+				}
+				if(split.endsWith(substring)) {
+					count += 1;
+				}
+			}	
+		}
+		//System.out.println(count);
+		return count;
 	}
 	
 
@@ -243,6 +284,9 @@ public class StringMethods {
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
+		for (int i = 0; i < s.length(); i++) {
+			///////////////////////////////////////////////////////////
+		}
 		return 0;
 	}
 
