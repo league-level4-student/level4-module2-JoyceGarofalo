@@ -284,9 +284,14 @@ public class StringMethods {
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
+		int lastind = 0;
+		int matchingIndex = 0;
 		for (int i = 0; i < s.length(); i++) {
-			///////////////////////////////////////////////////////////
+			//////////////////////////////////////////////////////////
 		}
+		
+		System.out.println(s);
+		System.out.println(lastind);
 		return 0;
 	}
 
@@ -295,7 +300,29 @@ public class StringMethods {
 	// palindromes are words or phrases are read the same forward as backward.
 	// HINT: ignore/remove all punctuation and spaces in the String
 	public static boolean palindrome(String s) {
-		return true;
+		String forward = "";
+		String backward = "";
+		for (int i = 0; i < s.length(); i++) {
+			if(Character.isLetterOrDigit(s.charAt(i)) == true) {
+				forward += s.charAt(i);
+			}
+		}
+		for (int i = s.length()-1; i > -1; i--) {
+			if(Character.isLetterOrDigit(s.charAt(i)) == true) {
+				backward += s.charAt(i);
+			}
+		}
+		String forwardUpper = forward.toUpperCase();
+		String backwardUpper = backward.toUpperCase();
+
+		if(forwardUpper.equals(backwardUpper)) {
+			//System.out.println("yes");
+			return true;
+		}
+		else {
+			//System.out.println("no");
+			return false;
+		}
 	}
 	
 }
