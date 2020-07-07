@@ -284,15 +284,12 @@ public class StringMethods {
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
-		int lastind = 0;
-		int matchingIndex = 0;
-		for (int i = 0; i < s.length(); i++) {
-			//////////////////////////////////////////////////////////
-		}
+		int firstind = s.indexOf(substring);
+		int lastind = s.lastIndexOf(substring);
+		int firstindnew = firstind + (substring.length());
+		int spaces = lastind-firstindnew;
 		
-		System.out.println(s);
-		System.out.println(lastind);
-		return 0;
+		return spaces;
 	}
 
 
